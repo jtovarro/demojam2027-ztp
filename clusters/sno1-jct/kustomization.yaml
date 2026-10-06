@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+generatorOptions:
+  disableNameSuffixHash: true
+
+resources: []
+  ### SNO1-JCT DEPLOYMENT ###
+  #- resources.yaml
+  #- sno1-jct.yaml

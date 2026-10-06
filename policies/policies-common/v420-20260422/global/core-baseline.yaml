@@ -1,0 +1,25 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: "core-baseline-v420-20260422"
+policyDefaults:
+  namespace: "ztp-policy"
+  complianceType: "musthave"
+  policySets: []
+  placement:
+    labelSelector:
+      matchLabels:
+        config-version-common: "v420-20260422"
+  remediationAction: "inform"
+policies:
+  # Core cluster authentication
+  - name: core-operator-auth-4.20
+    policyAnnotations:
+      ran.openshift.io/ztp-deploy-wave: "1"
+    manifests:
+      - path: reference-crs/required/authentication/htpasswd.yaml
+      - path: reference-crs/required/authentication/rbac.yaml
+      - path: reference-crs/required/authentication/oauth.yaml
+
+...
