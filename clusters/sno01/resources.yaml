@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: "sno1-jct"
+  name: "sno01"
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 ---
@@ -10,7 +10,7 @@ apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: es-bmc-secret
-  namespace: sno1-jct
+  namespace: sno01
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
@@ -31,7 +31,7 @@ apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: es-pull-secret
-  namespace: sno1-jct
+  namespace: sno01
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:

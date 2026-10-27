@@ -3,7 +3,6 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
 
-resources: []
-  ### SNO1-JCT DEPLOYMENT ###
-  #- resources.yaml
-  #- sno1-jct.yaml
+resources:
+  - resources.yaml
+  - sno01.yaml

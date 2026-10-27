@@ -1,8 +1,8 @@
 apiVersion: siteconfig.open-cluster-management.io/v1alpha1
 kind: ClusterInstance
 metadata:
-  name: "sno1-jct"
-  namespace: "sno1-jct"
+  name: "sno01"
+  namespace: "sno01"
   annotations:
     argocd.argoproj.io/sync-wave: "10"
 spec:
@@ -10,18 +10,18 @@ spec:
     # HoldInstallation will prevent installation from happening when true.
     # Inspection and validation will proceed as usual, but once the
     # RequirementsMet condition is true, installation will not begin until this field is set to false.
-  baseDomain: "gmbros.local"
+  baseDomain: "lab.localdomain"
   pullSecretRef:
     name: "pull-secret"
   clusterImageSetNameRef: "openshift-mirror"
-  sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCE2WT3sHsRyLL0fgz5QaQF5y4QT7FSweru4bA/5P8vxDx1UR/phjxW0Rk+qWGkTnCA12845NAOB+v+uG8hcX+faKPnZRk/3YCFES9KYN/of0wzp0bdulsDodoAsYEuLGyxFkVQWyU/FIM5N2yG8iHNk93sNThGATFN6MB8F1perG81zUT9GGJja8Hmvqci8nQInYkT5uNAaKFhBqg3Um0UTJJu7RjUtWbbrIepPul/i/PhkyoRLc08IIonXHn07vY8CH/GRbrlM/CZ1ZGSc5NtjNYQPH6/VxMtq2Uga3OorlKKErm3UzVI968zETSJUI+PDrZAK+kfxJ2PvGKqN+ypVoXaIRkviWyU4WNNbsJmlqwTTu+bz9psdp6KBVLEqkm99DDGblgoJpHFFWxZyh7Z61cBzzCdNrYhkJ/9Testh4mAVHpkjpD6+ys8edw9qHCHiNQkPrjQysdSOKf/QQ6a9/yPkNf48Ptp9DjK5tVPZAlDHx7of9ixEi20Rmgaw7c="
-  clusterName: "sno1-jct"
+  sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDez1IM9khO4HfGxUXtn3h47aUZRdRaLiLHH3xGgm4eoibJbkkuaM3dJp0kSPSEGvt1rbn1PRxPBVXOcq8tvzQWACvF0envWFhtBtfK9LKDdo3SIv28qad2sLNUonzFnQsld/ejvqiUtWPsDSPORTYJCK8RT6hwEXhRrNDX27DUhqheXyZCLH7PbggDpJ2+X76Qs1nD/iNVEoZHnTR+rvcdMINCoZgkNpFkLEHHC1G3kdPkNGYpQLEG/0zon2c4KzvyqafGwu6fzMEqC7hVYhddiJ//rsBAILIP+zaBf1lZ54vf1liLPH5WmA9O28W33LNiXRrfuG9thI6NsKoPqec+64ZFu2tlB6V8EYb8IIhsIlWAe/0//LmppLaClPRl32T/UhZL91cxB1g9NO8i4IxM3qPN8k9cvSSLUos6qB6tpmbQdhrTCT2ZoqiGm6qVCq68huWO5QykkqYhfrQ9paISV68ItT0QCuHCQ151+QexGnAy+01tjzNTuPVQi0qq+H8="
+  clusterName: "sno01"
   networkType: "OVNKubernetes"
   clusterNetwork:
     - cidr: 10.128.0.0/14
       hostPrefix: 23
   machineNetwork:
-    - cidr: 10.12.0.0/24
+    - cidr: 192.168.122.0/24
   ## Not used in SNO deployments, but required by the API.  The SNO installer will automatically assign VIPs from the machineNetwork CIDR.
   # apiVIPs:
   #   - 10.12.0.217
@@ -41,44 +41,44 @@ spec:
   #   - name: extra-manifests-cm
 
   ########################################################
-  # Nodes in sno1-jct
+  # Nodes in sno01
   ########################################################
   nodes:
-    - hostName: "sno1-jct"
+    - hostName: "sno01"
       role: "master"
-      bmcAddress: "redfish-virtualmedia+http://10.12.0.210:8000/redfish/v1/Systems/node00.sno1-jct.gmbros.local"
+      bmcAddress: "redfish-virtualmedia+http://bmc.lab.localdomain:8000/redfish/v1/Systems/52bd54af-9652-4099-bd99-3fdabc0ae6c6"
       bmcCredentialsName:
         name: "bmc-secret"
-      bootMACAddress: "00:50:56:08:ce:ea"
+      bootMACAddress: "52:54:00:b8:56:f4"
       bootMode: "UEFI"
       templateRefs:
         - name: ai-node-templates-v1
           namespace: open-cluster-management
       rootDeviceHints:
-        deviceName: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0"
+        deviceName: "/dev/vda"
       nodeNetwork:
         interfaces:
-          - name: "ens192"
-            macAddress: "00:50:56:08:ce:ea"
+          - name: "enp1s0"
+            macAddress: "52:54:00:b8:56:f4"
         config:
           interfaces:
-            - name: ens192
+            - name: enp1s0
               type: interface
               state: up
               ipv4:
                 enabled: true
                 dhcp: false
                 address:
-                  - ip: 10.12.0.219
-                    prefix-length: 28
-              mtu: 8950
+                  - ip: 192.168.122.85
+                    prefix-length: 24
+              # mtu: 8950
           dns-resolver:
             config:
               server:
-                - 10.12.0.1
+                - 10.0.0.2
           routes:
             config:
               - destination: 0.0.0.0/0
-                next-hop-address: 10.12.0.1
-                next-hop-interface: ens192
+                next-hop-address: 192.168.122.1
+                next-hop-interface: enp1s0
   ########################################################
