@@ -32,4 +32,5 @@ policies:
         patches:
         - spec:
             installPlanApproval: Automatic
+      - path: reference-crs/required/virtualization/ocp-virtHyperConverged.yaml
 ...
