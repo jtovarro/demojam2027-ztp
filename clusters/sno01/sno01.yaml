@@ -46,10 +46,10 @@ spec:
   nodes:
     - hostName: "sno01"
       role: "master"
-      bmcAddress: "redfish-virtualmedia+http://bmc.lab.localdomain:8000/redfish/v1/Systems/52bd54af-9652-4099-bd99-3fdabc0ae6c6"
+      bmcAddress: "redfish-virtualmedia+http://bmc.lab.localdomain:8000/redfish/v1/Systems/8353857e-4fa2-4951-9414-ddb3c23b2cc4"
       bmcCredentialsName:
         name: "bmc-secret"
-      bootMACAddress: "52:54:00:b8:56:f4"
+      bootMACAddress: "52:54:00:5f:e9:da"
       bootMode: "UEFI"
       templateRefs:
         - name: ai-node-templates-v1
@@ -59,7 +59,7 @@ spec:
       nodeNetwork:
         interfaces:
           - name: "enp1s0"
-            macAddress: "52:54:00:b8:56:f4"
+            macAddress: "52:54:00:5f:e9:da"
         config:
           interfaces:
             - name: enp1s0
