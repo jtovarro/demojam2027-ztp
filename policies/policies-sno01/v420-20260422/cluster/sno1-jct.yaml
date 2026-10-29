@@ -2,18 +2,18 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
-  name: "cnf-sno1-jct"
+  name: "sno01"
 policyDefaults:
   namespace: "ztp-policy"
   policySets: []
   placement:
     labelSelector:
       matchLabels:
-        name: "sno1-jct"
+        name: "sno01"
   remediationAction: "inform"
 policies:
   # Custom cluster configuration
-  - name: cnf-sno1-jct-config-4.20
+  - name: cnf-sno01-config-4.20
     policyAnnotations:
       ran.openshift.io/ztp-deploy-wave: "1"
     manifests:

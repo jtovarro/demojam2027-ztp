@@ -17,11 +17,19 @@ policies:
   - name: type1-operator-subs-4.20
     policyAnnotations:
       ran.openshift.io/ztp-deploy-wave: "5"
-    manifests:   
+    manifests:
+      ## SRIOV operator
       - path: reference-crs/required/sriov/SriovSubscriptionNS.yaml
       - path: reference-crs/required/sriov/SriovSubscriptionOperGroup.yaml
       - path: reference-crs/required/sriov/SriovSubscription.yaml
-        # patches:
-        # - spec:
-        #     installPlanApproval: Manual
+        patches:
+        - spec:
+            installPlanApproval: Automatic
+      ## CNV operator
+      - path: reference-crs/required/virtualization/ocp-virtNS.yaml
+      - path: reference-crs/required/virtualization/ocp-virtOperGroup.yaml
+      - path: reference-crs/required/virtualization/ocp-virtSubscription.yaml
+        patches:
+        - spec:
+            installPlanApproval: Automatic
 ...

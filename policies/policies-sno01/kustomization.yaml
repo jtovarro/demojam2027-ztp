@@ -3,8 +3,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- resources/site-data-sno1-jct.yaml
-- resources/site-secret-sno1-jct.yaml
+- resources/site-data-sno01.yaml
+- resources/site-secret-sno01.yaml
 - v420-20260422
 
 generators: []

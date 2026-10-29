@@ -10,6 +10,6 @@ data:
   ########################################################
   # Global vars
   ########################################################
-  mgmt-name: jct-ocp4
-  mgmt-domain: gmbros.local
+  mgmt-name: ocp-4.22.9
+  mgmt-domain: sandbox4001.opentlc.com
   install-plan-approval: Manual
