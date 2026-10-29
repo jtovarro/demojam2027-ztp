@@ -5,4 +5,4 @@ generatorOptions:
 
 resources:
   - resources.yaml
-  #- sno01.yaml
+  - sno01.yaml
