@@ -52,6 +52,7 @@ policies:
         patches:
         - spec:
             installPlanApproval: Automatic
+      - path: reference-crs/required/virtualization/ocp-virtCloudInitSecret.yaml
   
   - name: type1-instances-1-4.20
     policyAnnotations:
@@ -67,5 +68,5 @@ policies:
     manifests:      
       ## Virtualization CRs
       - path: reference-crs/required/virtualization/ocp-virtHyperConverged.yaml
-      #- path: reference-crs/required/virtualization/ocp-virtVM.yaml
+      - path: reference-crs/required/virtualization/ocp-virtVM.yaml
 ...
