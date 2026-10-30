@@ -1,0 +1,24 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    operatorframework.io/bundle-unpack-min-retry-interval: 10m
+  name: openshift-storage-group
+  namespace: openshift-storage
+spec:
+  upgradeStrategy: Default
+  targetNamespaces:
+    - openshift-storage
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    operatorframework.io/bundle-unpack-min-retry-interval: 10m
+  name: openshift-lvm-storage-group
+  namespace: openshift-lvm-storage
+spec:
+  upgradeStrategy: Default
+  targetNamespaces:
+    - openshift-storage

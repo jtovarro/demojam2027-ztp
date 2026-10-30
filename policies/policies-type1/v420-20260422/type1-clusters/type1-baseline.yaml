@@ -25,6 +25,13 @@ policies:
         patches:
         - spec:
             installPlanApproval: Automatic
+      ## Storage
+      - path: reference-crs/required/storage/storageNS.yaml
+      - path: reference-crs/required/storage/storageOperatorGroup.yaml
+      - path: reference-crs/required/storage/storageSubscription.yaml
+        patches:
+        - spec:
+            installPlanApproval: Automatic
       ## CNV operator
       - path: reference-crs/required/virtualization/ocp-virtNS.yaml
       - path: reference-crs/required/virtualization/ocp-virtOperGroup.yaml
@@ -32,5 +39,23 @@ policies:
         patches:
         - spec:
             installPlanApproval: Automatic
+  
+  - name: type1-instances-1-4.20
+    policyAnnotations:
+      ran.openshift.io/ztp-deploy-wave: "10"
+    manifests:
+      ## Storage CRs
+      - path: reference-crs/required/storage/lvm-cluster.yaml
+      ## Virtualization CRs
       - path: reference-crs/required/virtualization/ocp-virtHyperConverged.yaml
+      #- path: reference-crs/required/virtualization/ocp-virtVM.yaml
+  
+  - name: type1-instances-2-4.20
+    policyAnnotations:
+      ran.openshift.io/ztp-deploy-wave: "15"
+    manifests:
+      ## Storage CRs
+      - path: reference-crs/required/storage/storage-cluster.yaml
+      ## Virtualization CRs
+      #- path: reference-crs/required/virtualization/ocp-virtVM.yaml
 ...

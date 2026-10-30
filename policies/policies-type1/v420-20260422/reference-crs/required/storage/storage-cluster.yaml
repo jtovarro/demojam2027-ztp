@@ -1,0 +1,12 @@
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  name: ocs-storagecluster
+  namespace: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  multiCloudGateway:
+    dbStorageClassName: lvms-data-lab-vg1
+    reconcileStrategy: standalone
+  resourceProfile: balanced
