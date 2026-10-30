@@ -59,16 +59,13 @@ policies:
     manifests:
       ## Storage CRs
       - path: reference-crs/required/storage/lvm-cluster.yaml
-      ## Virtualization CRs
-      - path: reference-crs/required/virtualization/ocp-virtHyperConverged.yaml
-      #- path: reference-crs/required/virtualization/ocp-virtVM.yaml
-  
+      - path: reference-crs/required/storage/storage-cluster.yaml
+
   - name: type1-instances-2-4.20
     policyAnnotations:
       ran.openshift.io/ztp-deploy-wave: "15"
-    manifests:
-      ## Storage CRs
-      - path: reference-crs/required/storage/storage-cluster.yaml
+    manifests:      
       ## Virtualization CRs
+      - path: reference-crs/required/virtualization/ocp-virtHyperConverged.yaml
       #- path: reference-crs/required/virtualization/ocp-virtVM.yaml
 ...
