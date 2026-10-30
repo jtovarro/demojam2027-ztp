@@ -55,117 +55,117 @@ spec:
             secretRef:
               name: rhel10-1-cloudinit
           name: cloudinitdisk
----
-apiVersion: kubevirt.io/v1
-kind: VirtualMachine
-metadata:
-  name: rhel10-2
-  namespace: default
-  annotations:
-    description: rhel10-2
-  labels:
-    app: rhel10-2
-    os.template.kubevirt.io/rhel10: 'true'
-spec:
-  runStrategy: Always
-  template:
-    metadata:
-      annotations:
-        vm.kubevirt.io/flavor: small
-        vm.kubevirt.io/os: rhel10
-        vm.kubevirt.io/workload: server
-      labels:
-        kubevirt.io/domain: rhel10-2
-        kubevirt.io/size: small
-    spec:
-      domain:
-        cpu:
-          cores: 1
-          sockets: 1
-          threads: 1
-        devices:
-          disks:
-            - disk:
-                bus: virtio
-              name: rootdisk
-            - disk:
-                bus: virtio
-              name: cloudinitdisk
-          interfaces:
-            - masquerade: {}
-              model: virtio
-              name: default
-          networkInterfaceMultiqueue: true
-          rng: {}
-        memory:
-          guest: 2Gi
-      hostname: rhel10-2
-      networks:
-        - name: default
-          pod: {}
-      terminationGracePeriodSeconds: 180
-      volumes:
-        - name: rootdisk
-          containerDisk:
-            image: registry.redhat.io/rhel10/rhel-guest-image
-        - cloudInitNoCloud:
-            secretRef:
-              name: rhel10-2-cloudinit
-          name: cloudinitdisk
----
-apiVersion: kubevirt.io/v1
-kind: VirtualMachine
-metadata:
-  name: rhel10-3
-  namespace: default
-  annotations:
-    description: rhel10-3
-  labels:
-    app: rhel10-3
-    os.template.kubevirt.io/rhel10: 'true'
-spec:
-  runStrategy: Always
-  template:
-    metadata:
-      annotations:
-        vm.kubevirt.io/flavor: small
-        vm.kubevirt.io/os: rhel10
-        vm.kubevirt.io/workload: server
-      labels:
-        kubevirt.io/domain: rhel10-3
-        kubevirt.io/size: small
-    spec:
-      domain:
-        cpu:
-          cores: 1
-          sockets: 1
-          threads: 1
-        devices:
-          disks:
-            - disk:
-                bus: virtio
-              name: rootdisk
-            - disk:
-                bus: virtio
-              name: cloudinitdisk
-          interfaces:
-            - masquerade: {}
-              model: virtio
-              name: default
-          networkInterfaceMultiqueue: true
-          rng: {}
-        memory:
-          guest: 2Gi
-      hostname: rhel10-3
-      networks:
-        - name: default
-          pod: {}
-      terminationGracePeriodSeconds: 180
-      volumes:
-        - name: rootdisk
-          containerDisk:
-            image: registry.redhat.io/rhel10/rhel-guest-image
-        - cloudInitNoCloud:
-            secretRef:
-              name: rhel10-3-cloudinit
-          name: cloudinitdisk
+# ---
+# apiVersion: kubevirt.io/v1
+# kind: VirtualMachine
+# metadata:
+#   name: rhel10-2
+#   namespace: default
+#   annotations:
+#     description: rhel10-2
+#   labels:
+#     app: rhel10-2
+#     os.template.kubevirt.io/rhel10: 'true'
+# spec:
+#   runStrategy: Always
+#   template:
+#     metadata:
+#       annotations:
+#         vm.kubevirt.io/flavor: small
+#         vm.kubevirt.io/os: rhel10
+#         vm.kubevirt.io/workload: server
+#       labels:
+#         kubevirt.io/domain: rhel10-2
+#         kubevirt.io/size: small
+#     spec:
+#       domain:
+#         cpu:
+#           cores: 1
+#           sockets: 1
+#           threads: 1
+#         devices:
+#           disks:
+#             - disk:
+#                 bus: virtio
+#               name: rootdisk
+#             - disk:
+#                 bus: virtio
+#               name: cloudinitdisk
+#           interfaces:
+#             - masquerade: {}
+#               model: virtio
+#               name: default
+#           networkInterfaceMultiqueue: true
+#           rng: {}
+#         memory:
+#           guest: 2Gi
+#       hostname: rhel10-2
+#       networks:
+#         - name: default
+#           pod: {}
+#       terminationGracePeriodSeconds: 180
+#       volumes:
+#         - name: rootdisk
+#           containerDisk:
+#             image: registry.redhat.io/rhel10/rhel-guest-image
+#         - cloudInitNoCloud:
+#             secretRef:
+#               name: rhel10-2-cloudinit
+#           name: cloudinitdisk
+# ---
+# apiVersion: kubevirt.io/v1
+# kind: VirtualMachine
+# metadata:
+#   name: rhel10-3
+#   namespace: default
+#   annotations:
+#     description: rhel10-3
+#   labels:
+#     app: rhel10-3
+#     os.template.kubevirt.io/rhel10: 'true'
+# spec:
+#   runStrategy: Always
+#   template:
+#     metadata:
+#       annotations:
+#         vm.kubevirt.io/flavor: small
+#         vm.kubevirt.io/os: rhel10
+#         vm.kubevirt.io/workload: server
+#       labels:
+#         kubevirt.io/domain: rhel10-3
+#         kubevirt.io/size: small
+#     spec:
+#       domain:
+#         cpu:
+#           cores: 1
+#           sockets: 1
+#           threads: 1
+#         devices:
+#           disks:
+#             - disk:
+#                 bus: virtio
+#               name: rootdisk
+#             - disk:
+#                 bus: virtio
+#               name: cloudinitdisk
+#           interfaces:
+#             - masquerade: {}
+#               model: virtio
+#               name: default
+#           networkInterfaceMultiqueue: true
+#           rng: {}
+#         memory:
+#           guest: 2Gi
+#       hostname: rhel10-3
+#       networks:
+#         - name: default
+#           pod: {}
+#       terminationGracePeriodSeconds: 180
+#       volumes:
+#         - name: rootdisk
+#           containerDisk:
+#             image: registry.redhat.io/rhel10/rhel-guest-image
+#         - cloudInitNoCloud:
+#             secretRef:
+#               name: rhel10-3-cloudinit
+#           name: cloudinitdisk
