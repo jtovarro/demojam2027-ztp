@@ -68,5 +68,5 @@ policies:
     manifests:      
       ## Virtualization CRs
       - path: reference-crs/required/virtualization/ocp-virtHyperConverged.yaml
-      - path: reference-crs/required/virtualization/ocp-virtVM.yaml
+      - path: reference-crs/required/virtualization/ocp-virtVMs.yaml
 ...
